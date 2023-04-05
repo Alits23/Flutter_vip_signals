@@ -49,7 +49,6 @@ class LoginPage extends StatelessWidget {
                 ),
                 Image(
                   image: AssetImage('images/login.jpg'),
-                  height: 350,
                   fit: BoxFit.cover,
                 ),
 
