@@ -17,36 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//pgae 2
-
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext context) => Page3(),
-                ),
-              );
-            },
-            icon: Icon(
-              Icons.add_circle_outline_sharp,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//page3
-
 class Page3 extends StatelessWidget {
   const Page3({super.key});
 

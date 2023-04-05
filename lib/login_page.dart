@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'blog_page.dart';
+import 'password_recovery.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+
+  void NavigateTo(BuildContext context, Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) => page,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +25,7 @@ class LoginPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 35.0),
+                  padding: const EdgeInsets.only(top: 15.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -40,19 +49,19 @@ class LoginPage extends StatelessWidget {
                 ),
                 Image(
                   image: AssetImage('images/login.jpg'),
+                  height: 350,
                   fit: BoxFit.cover,
                 ),
+
+                // Login button
+
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     side: BorderSide(color: Colors.blue, width: 1.5),
                     minimumSize: Size(170.0, 40.0),
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context) => SecondPage(),
-                      ),
-                    );
+                    NavigateTo(context, BlogPage());
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -62,28 +71,33 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 40.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: Colors.black,
-                      elevation: 5,
-                      minimumSize: Size(170.0, 40.0),
-                      backgroundColor: Colors.blue,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (BuildContext context) => SecondPage(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Sign Up',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
+
+                // Sign In Button
+
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shadowColor: Colors.black,
+                    elevation: 5,
+                    minimumSize: Size(170.0, 40.0),
+                    backgroundColor: Colors.blue,
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(fontSize: 16.0),
                   ),
                 ),
+
+                // forget Password
+
+                TextButton(
+                  onPressed: () {
+                    NavigateTo(context, PasswordRecoveryPage());
+                  },
+                  child: Text('Forgot your Password ?'),
+                ),
+
+                SizedBox(height: 20),
               ],
             ),
           ),
