@@ -16,21 +16,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-class Page3 extends StatelessWidget {
-  const Page3({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueAccent,
-      body: Center(
-        child: Container(
-          width: 50.0,
-          height: 50.0,
-          child: Text('3333333333333333333333'),
-        ),
-      ),
-    );
-  }
-}
