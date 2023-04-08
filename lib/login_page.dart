@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 15.0),
@@ -30,20 +30,12 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Welcome',
+                        'Signals VIP',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.blue[900],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 7.0),
-                        child: Icon(
-                          Icons.login_outlined,
-                          color: Colors.blue[900],
-                          size: 30,
-                        ),
-                      )
                     ],
                   ),
                 ),
