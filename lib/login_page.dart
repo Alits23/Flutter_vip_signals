@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Signals VIP',
+                        'VIP Signals',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.blue[900],
