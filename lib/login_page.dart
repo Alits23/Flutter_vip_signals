@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'blog_page.dart';
 import 'password_recovery.dart';
 
@@ -15,81 +16,105 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'VIP Signals',
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: Colors.blue[900],
+    return WillPopScope(
+      onWillPop: () async {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Are you sure?'),
+              content: Text('Do you want to exit?'),
+              actions: <Widget>[
+                ElevatedButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: Text('No'),
+                ),
+                ElevatedButton(
+                  onPressed: () => SystemNavigator.pop(),
+                  child: Text('Yes'),
+                ),
+              ],
+            );
+          },
+        );
+        return false;
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'VIP Signals',
+                          style: TextStyle(
+                            fontSize: 50,
+                            color: Colors.blue[900],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Image(
-                  image: AssetImage('images/login.jpg'),
-                  fit: BoxFit.cover,
-                ),
-
-                // Login button
-
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.blue, width: 1.5),
-                    minimumSize: Size(170.0, 40.0),
-                  ),
-                  onPressed: () {
-                    NavigateTo(context, BlogPage());
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(color: Colors.blue, fontSize: 16.0),
+                      ],
                     ),
                   ),
-                ),
-
-                // Sign In Button
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shadowColor: Colors.black,
-                    elevation: 5,
-                    minimumSize: Size(170.0, 40.0),
-                    backgroundColor: Colors.blue,
+                  Image(
+                    image: AssetImage('images/login.jpg'),
+                    fit: BoxFit.contain,
                   ),
-                  onPressed: () {},
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(fontSize: 16.0),
+
+                  // Login button
+
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.blue, width: 1.5),
+                      minimumSize: Size(170.0, 40.0),
+                    ),
+                    onPressed: () {
+                      NavigateTo(context, BlogPage());
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(color: Colors.blue, fontSize: 16.0),
+                      ),
+                    ),
                   ),
-                ),
 
-                // forget Password
+                  // Sign In Button
 
-                TextButton(
-                  onPressed: () {
-                    NavigateTo(context, PasswordRecoveryPage());
-                  },
-                  child: Text('Forgot your Password ?'),
-                ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: Colors.black,
+                      elevation: 5,
+                      minimumSize: Size(170.0, 40.0),
+                      backgroundColor: Colors.blue,
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(fontSize: 16.0),
+                    ),
+                  ),
 
-                SizedBox(height: 20),
-              ],
+                  // forget Password
+
+                  TextButton(
+                    onPressed: () {
+                      NavigateTo(context, PasswordRecoveryPage());
+                    },
+                    child: Text('Forgot your Password ?'),
+                  ),
+
+                  SizedBox(height: 20),
+                ],
+              ),
             ),
           ),
         ),
